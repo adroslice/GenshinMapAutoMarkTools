@@ -1,35 +1,40 @@
-# 使用说明
-## 适配
-- windows7以上 64位
-- 原神1920x1080,1366x768,1280x720窗口
-- 待更新渊下宫和鹤观
-- English version is to be updated
-## 如何使用
-### release 中下载文件并解压，以管理员权限运行main.exe,存放地址不要有中文路径和空格，原神以支持的窗口分辨率运行，且要在前台
-### 代码运行环境
-- 配置python 3.7+opencv3.1~3.4(之后版本因为专利问题surf使用起来很麻烦)+opencv contrib 我用的是opencv-python3.4.2.17
-- 安装项目中所需的其他库pyqt5,keyboard...
-- 以管理员权限运行main.py
-## 功能
-- 搜索地图资源并标点
-- 删除当前地图界面所有标点
-- 删除鼠标所在标点并加入资源刷新队列
-- 获取鼠标所在标点的提示信息(比如宝箱怎么开)
-- 删除当前所在位置标点并加入资源刷新队列
-- 标点删除后经过对应刷新时间后刷新
-- ~~小地图追踪map_track.py(目前解算速度只有0.6s/次，准确度在非城镇还可以)~~
-## 技术方案
-- python+opencv+qt5  
-- opencv surf-flannbasedmatch 匹配当前地图坐标     
-- 使用文件缓存图片特征点加速  
-- 坐标由[天理坐标系](https://github.com/GengGode/GenshinImpact_AutoTrack_DLL#%E5%A4%A9%E7%90%86%E5%9D%90%E6%A0%87%E6%A8%A1%E5%9E%8B)换算成大地图图片坐标
-- 使用opencv TM_SQDIFF_NORME算法D模板匹配查找原神ui按钮
-- win32api模拟键盘鼠标
-- pyqt编写ui界面
+# Usage Instructions
+## TODO Adaptation
+- Windows 7 or above (64-bit)
+- Genshin Impact running at 1920x1080, 1366x768 or 1280x720 windowed
+- TODO To be updated Yuanxia Palace and Crane Temple
+- English version TBA
 
-## 地图数据
-- 地图标点数据源自
-[空荧酒馆原神地图](https://github.com/kongying-tavern/yuan-shen-map)
-## 配置快捷键
-- config.in中每行冒号后修改  
-- 具体支持快捷键参考python keyboard
+## Running via a Release
+- Download the latest release and unzip it.
+- Run `main.exe` with administrator privileges. Make sure the path to it has no special characters in it. Genshin Impact must be in the foreground, running at a supported window resolution.
+
+## Running via Source Code
+- Configure python 3.7 + opencv 3.1~3.4 (the latter is tricky due to patent issues) + opencv-contrib. I use opencv-python3.4.2.17
+- Install other libraries required by the project (pyqt5, keyboard...)
+- Run `main.py` with administrator privileges
+
+## Features
+- Search and mark map resources
+- Delete all markers on the currently visible map
+- Delete the marker at the cursor and add it to the resource respawn queue
+- Get contextual information based on the cursor location
+- Delete the current location marker and add it to the respawn queue
+  - After deletion in this manner, it will be refreshed after the corresponding respawn time.
+- ~~Minimap tracking map_track.py (TODO The current solutions speed is 0.6s/time and the accuracy is ok in non-towns~~
+
+## Technical solutions
+- python + opencv + qt5
+- opencv surf-flann-based matching for current map coordinates
+- Use file cache image feature points to speed up
+- ![celestial coordinate]([celestial coordinate](https://github.com/GengGode/GenshinImpact_AutoTrack_DLL#%E5%A4%A9%E7%90%86%E5%9D%90%E6%A0%87%E6%A8%A1%E5%9E%8B)) conversion
+- Use opencv TM_SQDIFF_NORME algorithm D template matching to find Genshin Impact ui buttons
+- Wwin32 API simulates keyboard and mouse
+- pyqt to render the UI
+
+## Map data
+- Map point data from ![Kongying Taverns yuan-shen-map](https://github.com/kongying-tavern/yuan-shen-map)
+
+## Configuring shortcuts
+- Modify each line after the colon
+- For specific shortcut keys, please refer to python keyboard
